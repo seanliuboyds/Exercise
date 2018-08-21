@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <title>New Item</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<ul class="nav justify-content-center">
+    <li class="nav-item">
+        <a class="nav-link active" href="/add">Add an Item</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/">All Items</a>
+    </li>
+</ul>
+<div class="container">
+    <div class="jumbotron">
+        <form action="#"
+              th:action="@{/process}"
+              th:object="${item}"
+              method="post">
+            <input type="hidden" th:field="*{id}" />
+            Title :<input type="text" th:field="*{title}" />
+            <span th:if="${#fields.hasErrors('title')}"
+                  th:errors="*{title}"></span><br />
+            Content :<textarea rows="3" th:field="*{content}" />
+            <span th:if="${#fields.hasErrors('content')}"
+                  th:errors="*{content}"></span>
+            <br />
+            <button type="submit" class="btn btn-success" value="Submit" >Submit</button>
+        </form>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
